@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: 0 0% 100%;
+  --color-foreground: 222.2 84% 4.9%;
+  --color-card: 0 0% 100%;
+  --color-card-foreground: 222.2 84% 4.9%;
+  --color-popover: 0 0% 100%;
+  --color-popover-foreground: 222.2 84% 4.9%;
+  --color-primary: 222.2 47.4% 11.2%;
+  --color-primary-foreground: 210 40% 98%;
+  --color-secondary: 210 40% 96.1%;
+  --color-secondary-foreground: 222.2 47.4% 11.2%;
+  --color-muted: 210 40% 96.1%;
+  --color-muted-foreground: 215.4 16.3% 46.9%;
+  --color-accent: 210 40% 96.1%;
+  --color-accent-foreground: 222.2 47.4% 11.2%;
+  --color-destructive: 0 84.2% 60.2%;
+  --color-destructive-foreground: 210 40% 98%;
+  --color-border: 214.3 31.8% 91.4%;
+  --color-input: 214.3 31.8% 91.4%;
+  --color-ring: 222.2 84% 4.9%;
+  --radius: 0.5rem;
+}
+
+@layer utilities {
+  .border-border {
+    border-color: hsl(var(--color-border));
+  }
+  .border-input {
+    border-color: hsl(var(--color-input));
+  }
+  .bg-background {
+    background-color: hsl(var(--color-background));
+  }
+  .bg-card {
+    background-color: hsl(var(--color-card));
+  }
+  .bg-primary {
+    background-color: hsl(var(--color-primary));
+  }
+  .bg-secondary {
+    background-color: hsl(var(--color-secondary));
+  }
+  .bg-muted {
+    background-color: hsl(var(--color-muted));
+  }
+  .bg-accent {
+    background-color: hsl(var(--color-accent));
+  }
+  .bg-destructive {
+    background-color: hsl(var(--color-destructive));
+  }
+  .text-foreground {
+    color: hsl(var(--color-foreground));
+  }
+  .text-card-foreground {
+    color: hsl(var(--color-card-foreground));
+  }
+  .text-primary {
+    color: hsl(var(--color-primary));
+  }
+  .text-primary-foreground {
+    color: hsl(var(--color-primary-foreground));
+  }
+  .text-secondary-foreground {
+    color: hsl(var(--color-secondary-foreground));
+  }
+  .text-muted-foreground {
+    color: hsl(var(--color-muted-foreground));
+  }
+  .text-accent-foreground {
+    color: hsl(var(--color-accent-foreground));
+  }
+  .text-destructive-foreground {
+    color: hsl(var(--color-destructive-foreground));
+  }
+  .ring-ring {
+    --tw-ring-color: hsl(var(--color-ring));
+  }
+  .ring-offset-background {
+    --tw-ring-offset-color: hsl(var(--color-background));
+  }
+  .hover\:bg-primary\/90:hover {
+    background-color: hsl(var(--color-primary) / 0.9);
+  }
+  .hover\:bg-secondary\/80:hover {
+    background-color: hsl(var(--color-secondary) / 0.8);
+  }
+  .hover\:bg-destructive\/90:hover {
+    background-color: hsl(var(--color-destructive) / 0.9);
+  }
+  .hover\:bg-accent:hover {
+    background-color: hsl(var(--color-accent));
+  }
+  .hover\:text-accent-foreground:hover {
+    color: hsl(var(--color-accent-foreground));
+  }
+  .hover\:text-primary:hover {
+    color: hsl(var(--color-primary));
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--color-border));
+  }
+  body {
+    background-color: hsl(var(--color-background));
+    color: hsl(var(--color-foreground));
+    font-family: 'Inter', 'SF Pro Display', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+  }
+}
