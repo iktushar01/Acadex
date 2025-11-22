@@ -1,8 +1,10 @@
+import Lottie from 'lottie-react'
 import { Button } from '@/components/ui/button'
 import Features from './Features'
 import HowItWorks from './HowItWorks'
 import About from './About'
 import Contact from './Contact'
+import writingAnimation from '@/assets/Writing.json'
 
 function Home() {
   const scrollToSection = (id) => {
@@ -16,7 +18,7 @@ function Home() {
     <div className="space-y-20">
       {/* Hero Section */}
       <section id="home" className="pt-8">
-        <div className="grid lg:grid-cols-2 gap-10 items-center bg-card rounded-3xl shadow-sm p-10 border border-border">
+        <div className="grid lg:grid-cols-2 gap-10 items-center bg-card rounded-3xl shadow-sm p-10 border border-border bg-note-grid relative overflow-hidden">
           <div className="space-y-6">
             <p className="text-sm uppercase tracking-[0.3em] text-primary">Acadex</p>
             <h1 className="text-4xl lg:text-5xl font-bold text-foreground leading-tight">
@@ -33,8 +35,13 @@ function Home() {
               Explore Features
             </Button>
           </div>
-          <div className="h-80 bg-gradient-to-br from-muted to-muted/50 rounded-2xl border border-dashed border-border flex items-center justify-center text-muted-foreground text-lg">
-            Illustration Placeholder
+          <div className="w-full h-full rounded-2xl flex items-center justify-center overflow-hidden">
+            <Lottie
+              animationData={writingAnimation}
+              loop={true}
+              autoplay={true}
+              className="w-full h-full"
+            />
           </div>
         </div>
       </section>

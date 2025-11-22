@@ -124,6 +124,50 @@
   .hover\:text-primary:hover {
     color: hsl(var(--color-primary));
   }
+  
+  /* Note-style grid background */
+  .bg-note-grid {
+    position: relative;
+    background-image: 
+      /* Horizontal lines */
+      linear-gradient(to bottom, hsl(var(--color-border) / 0.4) 1px, transparent 1px),
+      /* Vertical lines (subtle grid) */
+      linear-gradient(to right, hsl(var(--color-border) / 0.2) 1px, transparent 1px);
+    background-size: 
+      100% 28px,
+      28px 100%;
+    background-position: 
+      0 0,
+      0 0;
+  }
+  
+  .bg-note-grid::before {
+    content: '';
+    position: absolute;
+    left: 2.5rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: hsl(var(--color-primary) / 0.3);
+    z-index: 0;
+  }
+  
+  .dark .bg-note-grid {
+    background-image: 
+      /* Horizontal lines */
+      linear-gradient(to bottom, hsl(var(--color-border) / 0.25) 1px, transparent 1px),
+      /* Vertical lines (subtle grid) */
+      linear-gradient(to right, hsl(var(--color-border) / 0.15) 1px, transparent 1px);
+  }
+  
+  .dark .bg-note-grid::before {
+    background: hsl(var(--color-primary) / 0.2);
+  }
+  
+  .bg-note-grid > * {
+    position: relative;
+    z-index: 1;
+  }
 }
 
 @layer base {
