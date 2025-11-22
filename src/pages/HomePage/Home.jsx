@@ -1,5 +1,7 @@
+import { useState } from 'react'
 import Lottie from 'lottie-react'
 import { Button } from '@/components/ui/button'
+import LoginModal from '@/components/LoginModal'
 import Features from './Features'
 import HowItWorks from './HowItWorks'
 import About from './About'
@@ -7,6 +9,8 @@ import Contact from './Contact'
 import writingAnimation from '@/assets/Writing.json'
 
 function Home() {
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
+
   const scrollToSection = (id) => {
     const element = document.getElementById(id)
     if (element) {
@@ -27,13 +31,23 @@ function Home() {
             <p className="text-lg text-muted-foreground">
               A simple platform for classmates to upload, organize, and share study materials effortlessly.
             </p>
-            <Button
-              onClick={() => scrollToSection('features')}
-              size="lg"
-              className="rounded-full"
-            >
-              Explore Features
-            </Button>
+            <div className="flex gap-4">
+              <Button
+                onClick={() => setIsLoginModalOpen(true)}
+                size="lg"
+                className="rounded-full bg-primary hover:bg-primary/90 focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-all"
+              >
+                Get Started
+              </Button>
+              <Button
+                onClick={() => scrollToSection('features')}
+                size="lg"
+                variant="outline"
+                className="rounded-full"
+              >
+                Explore Features
+              </Button>
+            </div>
           </div>
           <div className="w-full h-full rounded-2xl flex items-center justify-center overflow-hidden">
             <Lottie
@@ -57,6 +71,12 @@ function Home() {
 
       {/* Contact Section */}
       <Contact />
+
+      {/* Login Modal */}
+      <LoginModal
+        isOpen={isLoginModalOpen}
+        onClose={() => setIsLoginModalOpen(false)}
+      />
     </div>
   )
 }

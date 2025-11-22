@@ -1,6 +1,11 @@
 import { useState } from 'react'
+import { useUser } from '@clerk/clerk-react'
+import { UserButton } from '@clerk/clerk-react'
+import { dark, light } from '@clerk/themes'
 import { Button } from '@/components/ui/button'
 import { ModeToggle } from '@/components/mode-toggle'
+import { useTheme } from './theme-provider'
+import LoginModal from './LoginModal'
 
 const navLinks = [
   { id: 'home', label: 'Home' },
@@ -12,6 +17,20 @@ const navLinks = [
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
+  const { isSignedIn } = useUser()
+  const { theme } = useTheme()
+
+  // Determine current theme (handle "system" by checking prefers-color-scheme)
+  const getCurrentTheme = () => {
+    if (theme === 'system') {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    }
+    return theme
+  }
+
+  const currentTheme = getCurrentTheme()
+  const isDark = currentTheme === 'dark'
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id)
@@ -51,12 +70,23 @@ function Navbar() {
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center gap-2 lg:gap-3">
             <ModeToggle />
-            <Button
-              onClick={() => scrollToSection('features')}
-              className="rounded-full"
-            >
-              Get Started
-            </Button>
+            {isSignedIn ? (
+              <UserButton
+                appearance={{
+                  baseTheme: isDark ? dark : light,
+                  elements: {
+                    avatarBox: 'w-10 h-10',
+                  },
+                }}
+              />
+            ) : (
+              <Button
+                onClick={() => setIsLoginModalOpen(true)}
+                className="rounded-full bg-primary hover:bg-primary/90 focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-all"
+              >
+                Get Started
+              </Button>
+            )}
           </div>
 
           {/* Mobile Actions (Theme Toggle + Hamburger) */}
@@ -114,15 +144,37 @@ function Navbar() {
                 {link.label}
               </Button>
             ))}
-            <Button
-              onClick={() => scrollToSection('features')}
-              className="w-full rounded-full mt-2"
-            >
-              Get Started
-            </Button>
+            {isSignedIn ? (
+              <div className="w-full flex justify-center mt-2">
+                <UserButton
+                  appearance={{
+                    baseTheme: isDark ? dark : light,
+                    elements: {
+                      avatarBox: 'w-10 h-10',
+                    },
+                  }}
+                />
+              </div>
+            ) : (
+              <Button
+                onClick={() => {
+                  setIsLoginModalOpen(true)
+                  setIsMenuOpen(false)
+                }}
+                className="w-full rounded-full mt-2 bg-primary hover:bg-primary/90 focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-all"
+              >
+                Get Started
+              </Button>
+            )}
           </div>
         </nav>
       </div>
+
+      {/* Login Modal */}
+      <LoginModal
+        isOpen={isLoginModalOpen}
+        onClose={() => setIsLoginModalOpen(false)}
+      />
     </header>
   )
 }
