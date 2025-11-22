@@ -1,26 +1,51 @@
 @import "tailwindcss";
 
-@theme {
-  --color-background: 0 0% 100%;
-  --color-foreground: 222.2 84% 4.9%;
-  --color-card: 0 0% 100%;
-  --color-card-foreground: 222.2 84% 4.9%;
-  --color-popover: 0 0% 100%;
-  --color-popover-foreground: 222.2 84% 4.9%;
-  --color-primary: 222.2 47.4% 11.2%;
-  --color-primary-foreground: 210 40% 98%;
-  --color-secondary: 210 40% 96.1%;
-  --color-secondary-foreground: 222.2 47.4% 11.2%;
-  --color-muted: 210 40% 96.1%;
-  --color-muted-foreground: 215.4 16.3% 46.9%;
-  --color-accent: 210 40% 96.1%;
-  --color-accent-foreground: 222.2 47.4% 11.2%;
+:root {
+  /* ☀️ Light Mode (Warm Modern + Study Friendly) - "light but cozy" */
+  --color-background: 45 20% 97%; /* #FAF9F6 - warm cream, not pure white */
+  --color-foreground: 0 0% 10%; /* #1A1A1A - text primary (warm dark) */
+  --color-card: 0 0% 100%; /* #FFFFFF - clean white cards */
+  --color-card-foreground: 0 0% 6%; /* #0F0F0F - headings color (warm dark) */
+  --color-popover: 0 0% 100%; /* #FFFFFF - clean white */
+  --color-popover-foreground: 0 0% 10%; /* #1A1A1A - text primary */
+  --color-primary: 45 89% 51%; /* #F4C430 - golden accent (matches dark mode) */
+  --color-primary-foreground: 0 0% 10%; /* dark text on golden accent */
+  --color-secondary: 45 15% 95%; /* #F5F4F1 - soft layer (warm light gray) */
+  --color-secondary-foreground: 0 0% 10%; /* #1A1A1A - text primary */
+  --color-muted: 45 15% 95%; /* #F5F4F1 - soft layer (sections) */
+  --color-muted-foreground: 0 0% 42%; /* #6B6B6B - text secondary (warm gray) */
+  --color-accent: 45 89% 51%; /* #F4C430 - golden accent */
+  --color-accent-foreground: 0 0% 10%; /* dark text on golden accent */
   --color-destructive: 0 84.2% 60.2%;
-  --color-destructive-foreground: 210 40% 98%;
-  --color-border: 214.3 31.8% 91.4%;
-  --color-input: 214.3 31.8% 91.4%;
-  --color-ring: 222.2 84% 4.9%;
+  --color-destructive-foreground: 0 0% 100%;
+  --color-border: 45 10% 89%; /* #E5E4E1 - border / divider (warm light gray) */
+  --color-input: 45 10% 89%; /* #E5E4E1 - border */
+  --color-ring: 45 89% 51%; /* #F4C430 - golden focus ring */
   --radius: 0.5rem;
+}
+
+.dark {
+  /* 🌙 Dark Theme (Warm Modern + Study Friendly) - "dark but cozy" */
+  --color-background: 0 0% 7%; /* #121212 - deep charcoal, not pure black */
+  --color-foreground: 0 0% 96%; /* #F5F5F5 - text primary */
+  --color-card: 0 0% 11%; /* #1D1D1D - surface / cards */
+  --color-card-foreground: 0 0% 100%; /* #FFFFFF - headings color */
+  --color-popover: 0 0% 11%; /* #1D1D1D - surface */
+  --color-popover-foreground: 0 0% 96%; /* #F5F5F5 - text primary */
+  --color-primary: 45 89% 51%; /* #F4C430 - golden accent (premium, study vibe) */
+  --color-primary-foreground: 0 0% 7%; /* dark text on golden accent */
+  --color-secondary: 0 0% 14%; /* #242424 - soft layer (sections) */
+  --color-secondary-foreground: 0 0% 96%; /* #F5F5F5 - text primary */
+  --color-muted: 0 0% 14%; /* #242424 - soft layer (sections) */
+  --color-muted-foreground: 0 0% 81%; /* #CFCFCF - text secondary */
+  --color-accent: 45 89% 51%; /* #F4C430 - golden accent */
+  --color-accent-foreground: 0 0% 7%; /* dark text on golden accent */
+  --color-destructive: 0 84.2% 60.2%;
+  --color-destructive-foreground: 0 0% 100%;
+  --color-border: 0 0% 18%; /* #2E2E2E - border / divider */
+  --color-input: 0 0% 18%; /* #2E2E2E - border */
+  --color-ring: 45 89% 51%; /* #F4C430 - golden focus ring */
+  /* Alternative accent: Teal #1ABC9C = 168 76% 42% (fresh + calm) */
 }
 
 @layer utilities {
