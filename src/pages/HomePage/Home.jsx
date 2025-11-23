@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useUser } from '@clerk/clerk-react'
 import Lottie from 'lottie-react'
 import { Button } from '@/components/ui/button'
 import LoginModal from '@/components/LoginModal'
@@ -10,12 +12,11 @@ import writingAnimation from '@/assets/Writing.json'
 
 function Home() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
+  const { isSignedIn } = useUser()
+  const navigate = useNavigate()
 
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
+  const handleDashboardClick = () => {
+    navigate('/dashboard')
   }
 
   return (
@@ -32,21 +33,23 @@ function Home() {
               A simple platform for classmates to upload, organize, and share study materials effortlessly.
             </p>
             <div className="flex gap-4">
-              <Button
-                onClick={() => setIsLoginModalOpen(true)}
-                size="lg"
-                className="rounded-full bg-primary hover:bg-primary/90 focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-all"
-              >
-                Get Started
-              </Button>
-              <Button
-                onClick={() => scrollToSection('features')}
-                size="lg"
-                variant="outline"
-                className="rounded-full"
-              >
-                Explore Features
-              </Button>
+              {isSignedIn ? (
+                <Button
+                  onClick={handleDashboardClick}
+                  size="lg"
+                  className="rounded-full bg-primary hover:bg-primary/90 focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-all"
+                >
+                  Go to Dashboard
+                </Button>
+              ) : (
+                <Button
+                  onClick={() => setIsLoginModalOpen(true)}
+                  size="lg"
+                  className="rounded-full bg-primary hover:bg-primary/90 focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-all"
+                >
+                  Get Started
+                </Button>
+              )}
             </div>
           </div>
           <div className="w-full h-full rounded-2xl flex items-center justify-center overflow-hidden">
