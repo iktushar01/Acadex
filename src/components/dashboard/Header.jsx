@@ -1,6 +1,6 @@
-import { Search, Bell, User } from 'lucide-react'
+import { Search, Bell } from 'lucide-react'
+import { UserButton, SignedIn, SignedOut, SignInButton } from '@clerk/clerk-react'
 import { Input } from '../common/Input'
-import { Avatar } from '../common/Avatar'
 import { Button } from '../common/Button'
 
 export function Header() {
@@ -28,9 +28,21 @@ export function Header() {
           </Button>
 
           {/* Profile */}
-          <Button variant="ghost" size="icon" className="rounded-full">
-            <Avatar src="" fallback="JD" className="h-8 w-8" />
-          </Button>
+          <SignedIn>
+            <UserButton
+              afterSignOutUrl="/"
+              appearance={{
+                elements: {
+                  avatarBox: 'h-8 w-8',
+                },
+              }}
+            />
+          </SignedIn>
+          <SignedOut>
+            <SignInButton mode="modal">
+              <Button size="sm">Sign in</Button>
+            </SignInButton>
+          </SignedOut>
         </div>
       </div>
     </header>
