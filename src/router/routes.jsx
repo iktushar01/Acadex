@@ -4,7 +4,7 @@ import DashboardLayout from '@/layouts/DashboardLayout'
 import Home from '@/pages/HomePage/Home'
 import DashboardHome from '@/pages/DashboardHome'
 import Notes from '@/pages/Notes'
-import Subjects from '@/pages/Subjects'
+import Courses from '@/pages/Courses/Courses'
 import UploadNote from '@/pages/UploadNote'
 import Classmates from '@/pages/Classmates'
 import Notifications from '@/pages/Notifications'
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     children: [
       { path: '/dashboard', element: <DashboardHome /> },
       { path: '/dashboard/notes', element: <Notes /> },
-      { path: '/dashboard/subjects', element: <Subjects /> },
+      { path: '/dashboard/courses', element: <Courses /> },
       { path: '/dashboard/upload', element: <UploadNote /> },
       { path: '/dashboard/classmates', element: <Classmates /> },
       { path: '/dashboard/notifications', element: <Notifications /> },

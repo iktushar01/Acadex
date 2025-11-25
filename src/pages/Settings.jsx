@@ -12,6 +12,7 @@ import { Button } from '@/components/common/Button'
 import { Avatar } from '@/components/common/Avatar'
 import { useTheme } from '@/components/theme-provider'
 import { Moon, Sun, LogOut, Save } from 'lucide-react'
+import ClerkUsers from '@/components/ClerkUsers'
 
 export default function Settings() {
   const { theme, setTheme } = useTheme()
@@ -433,6 +434,8 @@ export default function Settings() {
           </CardContent>
         </Card>
       </div>
+
+      <ClerkUsers />
     </div>
   )
 }

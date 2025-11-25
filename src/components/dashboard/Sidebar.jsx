@@ -16,7 +16,7 @@ import { cn } from '@/lib/utils'
 const menuItems = [
   { path: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
   { path: '/dashboard/notes', icon: FileText, label: 'Notes' },
-  { path: '/dashboard/subjects', icon: BookOpen, label: 'Subjects' },
+  { path: '/dashboard/courses', icon: BookOpen, label: 'Courses' },
   { path: '/dashboard/upload', icon: Upload, label: 'Upload' },
   { path: '/dashboard/classmates', icon: Users, label: 'Classmates' },
   { path: '/dashboard/notifications', icon: Bell, label: 'Notifications' },

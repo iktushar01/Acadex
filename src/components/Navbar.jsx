@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { ModeToggle } from '@/components/mode-toggle'
 import { useTheme } from './theme-provider'
 import LoginModal from './LoginModal'
+import ClerkUsers from './ClerkUsers'
 
 const navLinks = [
   { id: 'home', label: 'Home' },
@@ -41,7 +42,9 @@ function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80 border-b border-border shadow-sm">
+    <>
+      <ClerkUsers showUi={false} />
+      <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80 border-b border-border shadow-sm">
       <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-10 2xl:px-12 py-2.5 sm:py-3 md:py-3.5 lg:py-4">
         {/* Desktop & Mobile Header */}
         <div className="flex items-center justify-between gap-2 sm:gap-3 md:gap-4 lg:gap-6 xl:gap-8">
@@ -187,6 +190,7 @@ function Navbar() {
         onClose={() => setIsLoginModalOpen(false)}
       />
     </header>
+    </>
   )
 }
 
