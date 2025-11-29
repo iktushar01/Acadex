@@ -10,7 +10,7 @@ export default function DashboardAccessModal({
   onClose,
   onCreateClass,
   onJoinClass,
-  initialTab = 'create',
+  initialTab = 'join',
 }) {
   const [activeTab, setActiveTab] = useState(initialTab)
   const [isLoading, setIsLoading] = useState(false)
@@ -49,18 +49,6 @@ export default function DashboardAccessModal({
         <div className="flex gap-2 p-1 bg-muted rounded-lg">
           <button
             type="button"
-            onClick={() => setActiveTab('create')}
-            className={cn(
-              'flex-1 py-2.5 px-4 rounded-md text-sm font-medium transition-all',
-              activeTab === 'create'
-                ? 'bg-primary text-primary-foreground shadow-sm'
-                : 'text-muted-foreground hover:text-foreground'
-            )}
-          >
-            Create Classroom
-          </button>
-          <button
-            type="button"
             onClick={() => setActiveTab('join')}
             className={cn(
               'flex-1 py-2.5 px-4 rounded-md text-sm font-medium transition-all',
@@ -71,18 +59,30 @@ export default function DashboardAccessModal({
           >
             Join Classroom
           </button>
+          <button
+            type="button"
+            onClick={() => setActiveTab('create')}
+            className={cn(
+              'flex-1 py-2.5 px-4 rounded-md text-sm font-medium transition-all',
+              activeTab === 'create'
+                ? 'bg-primary text-primary-foreground shadow-sm'
+                : 'text-muted-foreground hover:text-foreground'
+            )}
+          >
+            Create Classroom
+          </button>
         </div>
 
         {/* Form Content */}
         <div className="min-h-[300px]">
-          {activeTab === 'create' ? (
-            <CreateClassForm 
-              onSubmit={handleCreateClass} 
+          {activeTab === 'join' ? (
+            <JoinClassForm 
+              onSubmit={handleJoinClass} 
               isLoading={isLoading}
             />
           ) : (
-            <JoinClassForm 
-              onSubmit={handleJoinClass} 
+            <CreateClassForm 
+              onSubmit={handleCreateClass} 
               isLoading={isLoading}
             />
           )}

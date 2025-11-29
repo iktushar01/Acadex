@@ -24,7 +24,7 @@ function Home() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
   const [isDashboardModalOpen, setIsDashboardModalOpen] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
-  const { isSignedIn } = useUser()
+  const { isSignedIn, user } = useUser()
   const { theme } = useTheme()
   const navigate = useNavigate()
 
@@ -97,7 +97,7 @@ function Home() {
     try {
       const response = await axios.post(`${API_URL}/classrooms/join`, {
         classCode: data.classCode,
-        displayName: data.displayName || '',
+        clerkId: user?.id || '',
       })
 
       await Swal.fire({
