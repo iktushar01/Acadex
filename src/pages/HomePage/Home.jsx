@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom'
 import { useUser } from '@clerk/clerk-react'
 import { ArrowRight, Sparkles, FileText, Users, TrendingUp, PenTool, BookOpen, StickyNote } from 'lucide-react'
 import Lottie from 'lottie-react'
+import axios from 'axios'
+import Swal from 'sweetalert2'
+import { useTheme } from '@/components/theme-provider'
 import { Button } from '@/components/common/Button'
 import LoginModal from '@/components/LoginModal'
 import DashboardAccessModal from '@/components/AccessDashboardModal/DashboardAccessModal'
@@ -12,12 +15,29 @@ import About from './About'
 import FeedBack from './FeedBack'
 import writingAnimation from '@/assets/Writing.json'
 
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  import.meta.env.VITE_API_BASE ||
+  'http://localhost:5000'
+
 function Home() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
   const [isDashboardModalOpen, setIsDashboardModalOpen] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
   const { isSignedIn } = useUser()
+  const { theme } = useTheme()
   const navigate = useNavigate()
+
+  // Get current theme (light or dark)
+  const getCurrentTheme = () => {
+    if (theme === 'system') {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    }
+    return theme
+  }
+
+  const currentTheme = getCurrentTheme()
+  const isDark = currentTheme === 'dark'
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 100)
@@ -29,19 +49,85 @@ function Home() {
   }
 
   const handleCreateClass = async (data) => {
-    // TODO: Implement API call to create classroom
-    console.log('Creating class:', data)
-    // After successful creation, navigate to dashboard
-    setIsDashboardModalOpen(false)
-    navigate('/dashboard')
+    try {
+      const payload = {
+        institutionType: data.institutionType,
+        institutionName: data.institutionName,
+        departmentName: data.departmentName || null,
+        classOrGrade: data.classOrGrade || null,
+        section: data.section || null,
+        classroomName: data.classroomName,
+        classCode: data.classCode,
+        capacity: data.capacity ? Number(data.capacity) : null,
+      }
+
+      await axios.post(`${API_URL}/classrooms`, payload)
+
+      await Swal.fire({
+        icon: 'success',
+        title: 'Classroom Created!',
+        text: `Your classroom "${data.classroomName}" has been created successfully.`,
+        confirmButtonColor: '#f97316',
+        confirmButtonText: 'Go to Dashboard',
+        timer: 3000,
+        timerProgressBar: true,
+        colorScheme: isDark ? 'dark' : 'light',
+        background: isDark ? '#1a1a1a' : '#ffffff',
+        color: isDark ? '#ffffff' : '#000000',
+      })
+
+      setIsDashboardModalOpen(false)
+      navigate('/dashboard')
+    } catch (error) {
+      console.error('Error creating classroom:', error)
+      Swal.fire({
+        icon: 'error',
+        title: 'Failed to Create Classroom',
+        text: error.response?.data?.error || 'Failed to create classroom. Please try again.',
+        confirmButtonColor: '#ef4444',
+        confirmButtonText: 'OK',
+        colorScheme: isDark ? 'dark' : 'light',
+        background: isDark ? '#1a1a1a' : '#ffffff',
+        color: isDark ? '#ffffff' : '#000000',
+      })
+    }
   }
 
   const handleJoinClass = async (data) => {
-    // TODO: Implement API call to join classroom
-    console.log('Joining class:', data)
-    // After successful join, navigate to dashboard
-    setIsDashboardModalOpen(false)
-    navigate('/dashboard')
+    try {
+      const response = await axios.post(`${API_URL}/classrooms/join`, {
+        classCode: data.classCode,
+        displayName: data.displayName || '',
+      })
+
+      await Swal.fire({
+        icon: 'success',
+        title: 'Joined Classroom!',
+        text: `You have successfully joined "${response.data.classroom?.classroomName || 'the classroom'}".`,
+        confirmButtonColor: '#f97316',
+        confirmButtonText: 'Go to Dashboard',
+        timer: 3000,
+        timerProgressBar: true,
+        colorScheme: isDark ? 'dark' : 'light',
+        background: isDark ? '#1a1a1a' : '#ffffff',
+        color: isDark ? '#ffffff' : '#000000',
+      })
+
+      setIsDashboardModalOpen(false)
+      navigate('/dashboard')
+    } catch (error) {
+      console.error('Error joining classroom:', error)
+      Swal.fire({
+        icon: 'error',
+        title: 'Failed to Join Classroom',
+        text: error.response?.data?.error || 'Failed to join classroom. Please check the code and try again.',
+        confirmButtonColor: '#ef4444',
+        confirmButtonText: 'OK',
+        colorScheme: isDark ? 'dark' : 'light',
+        background: isDark ? '#1a1a1a' : '#ffffff',
+        color: isDark ? '#ffffff' : '#000000',
+      })
+    }
   }
 
 

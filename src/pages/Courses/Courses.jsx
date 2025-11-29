@@ -5,7 +5,10 @@ import { BookOpen, Plus, FileText } from 'lucide-react'
 import axios from 'axios'
 import AddCourseModal from './AddCourseModal'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  import.meta.env.VITE_API_BASE ||
+  'http://localhost:5000'
 
 export default function Courses() {
   const [courses, setCourses] = useState([])

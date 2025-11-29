@@ -7,7 +7,10 @@ import { Card, CardContent } from '@/components/common/Card'
 import { EmptyState } from '@/components/dashboard/EmptyState'
 import { FileText } from 'lucide-react'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  import.meta.env.VITE_API_BASE ||
+  'http://localhost:5000'
 
 export default function Notes() {
   const [viewMode, setViewMode] = useState('grid')
