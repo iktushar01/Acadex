@@ -8,10 +8,25 @@ export default function CreateClassForm({ onSubmit, isLoading }) {
     register,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors },
   } = useForm()
 
   const institutionType = watch('institutionType')
+
+  const generateClassCode = () => {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+    let code = ''
+    for (let i = 0; i < 6; i += 1) {
+      code += chars.charAt(Math.floor(Math.random() * chars.length))
+    }
+    return code
+  }
+
+  const handleGenerateCode = () => {
+    const code = generateClassCode()
+    setValue('classCode', code, { shouldDirty: true, shouldValidate: true })
+  }
 
   const handleFormSubmit = (data) => {
     onSubmit(data)
@@ -97,6 +112,38 @@ export default function CreateClassForm({ onSubmit, isLoading }) {
         placeholder="e.g., CS101 - Introduction to Programming"
         required
       />
+
+      <div className="space-y-2">
+        <label htmlFor="classCode" className="text-sm font-medium text-foreground">
+          Class Code <span className="text-destructive">*</span>
+        </label>
+        <div className="flex gap-2">
+          <FormInput
+            label=""
+            name="classCode"
+            register={register('classCode', {
+              required: 'Class code is required',
+              pattern: {
+                value: /^[A-Za-z0-9]{6}$/,
+                message: 'Class code must be 6 characters (A-Z, 0-9)',
+              },
+            })}
+            errors={errors}
+            placeholder="e.g., ABC123"
+            className="flex-1 cursor-default"
+            readOnly
+          />
+          <Button
+            type="button"
+            variant="secondary"
+            size="sm"
+            className="whitespace-nowrap h-10 px-3 text-xs sm:text-sm"
+            onClick={handleGenerateCode}
+          >
+            Generate Code
+          </Button>
+        </div>
+      </div>
 
       <FormInput
         label="Capacity"
