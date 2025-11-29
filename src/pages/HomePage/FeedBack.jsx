@@ -72,7 +72,7 @@ function FeedBack() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
           {/* Header - Notebook Style */}
-          <div className="text-center space-y-6 mb-20 pl-4 lg:pl-0">
+          <div className="text-center space-y-6 mb-20 pl-0 sm:pl-4 lg:pl-0">
             {/* Sticky Note Badge */}
             <div 
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-yellow-300 dark:bg-yellow-900/40 border-2 border-yellow-400 dark:border-yellow-700 shadow-lg rotate-[-1deg] hover:rotate-0 transition-transform duration-300"
@@ -101,13 +101,13 @@ function FeedBack() {
               <span className="block mt-3 w-40 h-1 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full mx-auto" />
             </h2>
             
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto pl-4 border-l-4 border-primary/30 leading-relaxed">
+            <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto border-l-0 sm:border-l-4 pl-0 sm:pl-4 border-primary/30 leading-relaxed">
               Your feedback shapes the future of Acadex. Share your ideas for UI improvements, request new features, 
               or report bugs. Every suggestion helps us create a better experience for everyone.
             </p>
           </div>
           
-          <div className="grid gap-8 lg:grid-cols-2 pl-4 lg:pl-0">
+          <div className="grid gap-8 lg:grid-cols-2 pl-0 sm:pl-4 lg:pl-0">
             {/* Feedback Types - Notebook Style */}
             <div className="space-y-6">
               <div 

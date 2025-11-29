@@ -145,7 +145,7 @@ function Navbar() {
               {/* Theme Toggle - Sun/Moon Only */}
               <button
                 onClick={toggleTheme}
-                className="relative w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-lg border border-border bg-background hover:bg-accent flex items-center justify-center transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                className="relative w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-lg border border-border bg-background hover:bg-accent flex items-center justify-center transition-all duration-300 hover:scale-105 focus:outline-none"
                 aria-label="Toggle theme"
               >
                 <Sun
@@ -184,7 +184,7 @@ function Navbar() {
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="lg:hidden relative w-9 h-9 sm:w-10 sm:h-10 rounded-lg border border-border bg-background hover:bg-accent flex items-center justify-center transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                className="lg:hidden relative w-9 h-9 sm:w-10 sm:h-10 rounded-lg border border-border bg-background hover:bg-accent flex items-center justify-center transition-all duration-300 focus:outline-none text-foreground hover:text-black dark:hover:text-white"
                 aria-label="Toggle menu"
                 aria-expanded={isMenuOpen}
               >
@@ -225,7 +225,7 @@ function Navbar() {
                         className={`text-left px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 flex items-center gap-3 ${
                           isActive
                             ? 'bg-orange-500/15 text-foreground shadow-sm border border-orange-500/20'
-                            : 'text-foreground hover:bg-accent hover:text-primary'
+                            : 'text-foreground hover:bg-accent hover:text-black dark:hover:text-white'
                         }`}
                         style={{
                           animation: isMenuOpen ? `slideIn 0.3s ease-out ${index * 50}ms both` : 'none',

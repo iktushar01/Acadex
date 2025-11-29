@@ -5,6 +5,7 @@ import { ArrowRight, Sparkles, FileText, Users, TrendingUp, PenTool, BookOpen, S
 import Lottie from 'lottie-react'
 import { Button } from '@/components/common/Button'
 import LoginModal from '@/components/LoginModal'
+import DashboardAccessModal from '@/components/DashboardAccessModal'
 import Features from './Features'
 import HowItWorks from './HowItWorks'
 import About from './About'
@@ -13,6 +14,7 @@ import writingAnimation from '@/assets/Writing.json'
 
 function Home() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
+  const [isDashboardModalOpen, setIsDashboardModalOpen] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
   const { isSignedIn } = useUser()
   const navigate = useNavigate()
@@ -23,6 +25,22 @@ function Home() {
   }, [])
 
   const handleDashboardClick = () => {
+    setIsDashboardModalOpen(true)
+  }
+
+  const handleCreateClass = async (data) => {
+    // TODO: Implement API call to create classroom
+    console.log('Creating class:', data)
+    // After successful creation, navigate to dashboard
+    setIsDashboardModalOpen(false)
+    navigate('/dashboard')
+  }
+
+  const handleJoinClass = async (data) => {
+    // TODO: Implement API call to join classroom
+    console.log('Joining class:', data)
+    // After successful join, navigate to dashboard
+    setIsDashboardModalOpen(false)
     navigate('/dashboard')
   }
 
@@ -84,7 +102,7 @@ function Home() {
                     {/* Decorative underline */}
                     <span className="block mt-2 w-32 h-1 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full" />
                   </h1>
-                  <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-xl pl-4 border-l-4 border-primary/30">
+                  <p className="text-base sm:text-lg md:text-2xl text-muted-foreground leading-relaxed max-w-xl border-l-0 sm:border-l-4 pl-0 sm:pl-4 border-primary/30">
                     The modern platform for sharing notes, organizing courses, and collaborating with classmates.
                   </p>
                 </div>
@@ -116,15 +134,6 @@ function Home() {
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                     </Button>
                   )}
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="rounded-xl px-8 py-6 text-lg font-semibold border-2 hover:bg-accent/50 transition-all duration-300 relative"
-                  >
-                    <span onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}>
-                      Learn More
-                    </span>
-                  </Button>
                 </div>
               </div>
               
@@ -272,6 +281,14 @@ function Home() {
       <LoginModal
         isOpen={isLoginModalOpen}
         onClose={() => setIsLoginModalOpen(false)}
+      />
+
+      {/* Dashboard Access Modal */}
+      <DashboardAccessModal
+        isOpen={isDashboardModalOpen}
+        onClose={() => setIsDashboardModalOpen(false)}
+        onCreateClass={handleCreateClass}
+        onJoinClass={handleJoinClass}
       />
     </div>
   )

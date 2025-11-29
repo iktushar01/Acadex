@@ -23,13 +23,13 @@ function Logo({ onClick, className = '' }) {
         {/* Logo Icon Container with 3D Effect */}
         <div className="relative transform group-hover:rotate-3 transition-transform duration-500">
           {/* Outer Glow Ring - Enhanced */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/50 via-orange-500/30 to-amber-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse-slow scale-125" />
+          <div className="absolute inset-0 bg-gradient-to-br from-orange-500/60 via-orange-500/30 to-amber-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse-slow scale-125" />
           
           {/* Middle Glow Layer */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/40 via-primary/20 to-transparent rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse-slow" />
+          <div className="absolute inset-0 bg-gradient-to-br from-orange-500/40 via-orange-500/20 to-transparent rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse-slow" />
           
           {/* Icon Background with Modern Gradient */}
-          <div className="relative w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-2xl bg-gradient-to-br from-primary via-primary/95 to-primary/85 flex items-center justify-center shadow-2xl group-hover:shadow-[0_0_30px_rgba(var(--primary),0.5)] group-hover:scale-110 transition-all duration-500 overflow-hidden transform group-hover:-translate-y-1">
+          <div className="relative w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-2xl bg-gradient-to-br from-orange-500 via-orange-500/95 to-amber-500 flex items-center justify-center shadow-2xl group-hover:shadow-[0_0_30px_rgba(249,115,22,0.6)] group-hover:scale-110 transition-all duration-500 overflow-hidden transform group-hover:-translate-y-1">
             {/* Animated Gradient Mesh Overlay */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             
@@ -52,12 +52,12 @@ function Logo({ onClick, className = '' }) {
         {/* Modern Logo Text with Advanced Effects */}
         <div className="relative">
           {/* Text Glow Effect */}
-          <span className="absolute inset-0 text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-primary via-orange-500 to-amber-500 bg-clip-text text-transparent opacity-0 group-hover:opacity-20 blur-sm transition-opacity duration-500">
+          <span className="absolute inset-0 text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-400 bg-clip-text text-transparent opacity-0 group-hover:opacity-20 blur-sm transition-opacity duration-500">
             Acadex
           </span>
           
           {/* Main Text - Visible by default */}
-          <span className="relative z-10 text-lg sm:text-xl md:text-2xl font-bold text-foreground group-hover:bg-gradient-to-r group-hover:from-primary group-hover:via-orange-500 group-hover:to-amber-500 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-500 drop-shadow-sm transform group-hover:scale-105 inline-block">
+          <span className="relative z-10 text-lg sm:text-xl md:text-2xl font-bold text-orange-500 dark:text-orange-400 group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:via-amber-500 group-hover:to-yellow-400 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-500 drop-shadow-sm transform group-hover:scale-105 inline-block">
             Acadex
           </span>
           
