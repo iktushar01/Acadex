@@ -5,7 +5,7 @@ import { ArrowRight, Sparkles, FileText, Users, TrendingUp, PenTool, BookOpen, S
 import Lottie from 'lottie-react'
 import { Button } from '@/components/common/Button'
 import LoginModal from '@/components/LoginModal'
-import DashboardAccessModal from '@/components/DashboardAccessModal'
+import DashboardAccessModal from '@/components/AccessDashboardModal/DashboardAccessModal'
 import Features from './Features'
 import HowItWorks from './HowItWorks'
 import About from './About'

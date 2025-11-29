@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
-import { Button } from './common/Button'
-import { FormInput } from './common/FormInput'
+import { Button } from '../common/Button'
+import { FormInput } from '../common/FormInput'
 
 export default function JoinClassForm({ onSubmit, isLoading }) {
   const {
