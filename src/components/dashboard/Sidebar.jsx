@@ -14,18 +14,28 @@ import { Avatar } from '../common/Avatar'
 import { cn } from '@/lib/utils'
 
 const menuItems = [
-  { path: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-  { path: '/dashboard/notes', icon: FileText, label: 'Notes' },
-  { path: '/dashboard/courses', icon: BookOpen, label: 'Courses' },
-  { path: '/dashboard/upload', icon: Upload, label: 'Upload' },
-  { path: '/dashboard/classmates', icon: Users, label: 'Classmates' },
-  { path: '/dashboard/notifications', icon: Bell, label: 'Notifications' },
-  { path: '/dashboard/settings', icon: Settings, label: 'Settings' },
+  { key: 'dashboard', icon: LayoutDashboard, label: 'Dashboard' },
+  { key: 'notes', icon: FileText, label: 'Notes' },
+  { key: 'courses', icon: BookOpen, label: 'Courses' },
+  { key: 'upload', icon: Upload, label: 'Upload' },
+  { key: 'classmates', icon: Users, label: 'Classmates' },
+  { key: 'notifications', icon: Bell, label: 'Notifications' },
+  { key: 'settings', icon: Settings, label: 'Settings' },
 ]
 
-export function Sidebar() {
+export function Sidebar({ classCode }) {
   const { user, isLoaded } = useUser()
   const { signOut } = useClerk()
+
+  // Generate paths based on whether we're in a classroom context
+  const getPath = (key) => {
+    if (classCode) {
+      return key === 'dashboard' 
+        ? `/dashboard/classroom/${classCode}`
+        : `/dashboard/classroom/${classCode}/${key}`
+    }
+    return key === 'dashboard' ? '/dashboard' : `/dashboard/${key}`
+  }
 
   const fullName =
     user?.fullName || [user?.firstName, user?.lastName].filter(Boolean).join(' ').trim() || 'Student'
@@ -56,10 +66,11 @@ export function Sidebar() {
       <nav className="flex-1 overflow-y-auto p-4 space-y-1">
         {menuItems.map((item) => {
           const Icon = item.icon
+          const path = getPath(item.key)
           return (
             <NavLink
-              key={item.path}
-              to={item.path}
+              key={item.key}
+              to={path}
               className={({ isActive }) =>
                 cn(
                   'flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-colors',

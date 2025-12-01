@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { Search, Filter, Grid, List, RefreshCw } from 'lucide-react'
 import { Input } from '@/components/common/Input'
@@ -13,6 +14,7 @@ const API_URL =
   'http://localhost:5000'
 
 export default function Notes() {
+  const { classCode } = useParams()
   const [viewMode, setViewMode] = useState('grid')
   const [selectedFilter, setSelectedFilter] = useState('All')
   const [notes, setNotes] = useState([])
@@ -24,7 +26,10 @@ export default function Notes() {
     try {
       setLoading(true)
       setError('')
-      const response = await axios.get(`${API_URL}/notes`)
+      const url = classCode 
+        ? `${API_URL}/notes?classCode=${classCode}`
+        : `${API_URL}/notes`
+      const response = await axios.get(url)
       setNotes(response.data || [])
     } catch (err) {
       console.error('Failed to fetch notes:', err)
@@ -36,7 +41,7 @@ export default function Notes() {
 
   useEffect(() => {
     fetchNotes()
-  }, [])
+  }, [classCode])
 
   const subjects = useMemo(() => {
     const unique = Array.from(new Set(notes.map((note) => note.subject).filter(Boolean)))
@@ -95,7 +100,7 @@ export default function Notes() {
             <RefreshCw className={`h-4 w-4 mr-2 ${loading ? 'animate-spin' : ''}`} />
             Refresh
           </Button>
-          <Button as="a" href="/dashboard/upload">
+          <Button as="a" href={classCode ? `/dashboard/classroom/${classCode}/upload` : '/dashboard/upload'}>
             <FileText className="h-4 w-4 mr-2" />
             New Note
           </Button>
@@ -168,7 +173,7 @@ export default function Notes() {
           title="No notes yet"
           description="Upload your first note to see it listed here."
           actionLabel="Upload Note"
-          actionHref="/dashboard/upload"
+          actionHref={classCode ? `/dashboard/classroom/${classCode}/upload` : '/dashboard/upload'}
         />
       ) : viewMode === 'grid' ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

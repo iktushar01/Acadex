@@ -9,7 +9,7 @@ const API_URL =
   import.meta.env.VITE_API_BASE ||
   'http://localhost:5000'
 
-export default function AddCourseModal({ isOpen, onClose, onSuccess }) {
+export default function AddCourseModal({ isOpen, onClose, onSuccess, classCode }) {
   const [formData, setFormData] = useState({
     title: '',
     faculty: '',
@@ -48,6 +48,7 @@ export default function AddCourseModal({ isOpen, onClose, onSuccess }) {
         description: formData.description.trim() || null,
         semester: formData.semester.trim() || null,
         credits: formData.credits.trim() ? parseInt(formData.credits) : null,
+        classCode: classCode || null,
       }
 
       await axios.post(`${API_URL}/courses`, payload)

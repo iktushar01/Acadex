@@ -114,7 +114,13 @@ function Home() {
       })
 
       setIsDashboardModalOpen(false)
-      navigate('/dashboard')
+      // Navigate to classroom-specific dashboard
+      const classCode = response.data.classroom?.classCode
+      if (classCode) {
+        navigate(`/dashboard/classroom/${classCode}`)
+      } else {
+        navigate('/dashboard')
+      }
     } catch (error) {
       console.error('Error joining classroom:', error)
       Swal.fire({

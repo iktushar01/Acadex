@@ -3,7 +3,7 @@ import { UserButton, SignedIn, SignedOut, SignInButton } from '@clerk/clerk-reac
 import { Input } from '../common/Input'
 import { Button } from '../common/Button'
 
-export function Header() {
+export function Header({ classCode }) {
   return (
     <header className="sticky top-0 z-30 bg-background/95 backdrop-blur border-b border-border">
       <div className="flex items-center justify-between gap-4 p-4 lg:p-6">

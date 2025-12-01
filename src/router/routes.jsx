@@ -20,6 +20,7 @@ const router = createBrowserRouter([
   {
     element: <DashboardLayout />,
     children: [
+      // General dashboard routes (backward compatibility)
       { path: '/dashboard', element: <DashboardHome /> },
       { path: '/dashboard/notes', element: <Notes /> },
       { path: '/dashboard/courses', element: <Courses /> },
@@ -27,6 +28,19 @@ const router = createBrowserRouter([
       { path: '/dashboard/classmates', element: <Classmates /> },
       { path: '/dashboard/notifications', element: <Notifications /> },
       { path: '/dashboard/settings', element: <Settings /> },
+      // Classroom-specific routes
+      {
+        path: '/dashboard/classroom/:classCode',
+        children: [
+          { index: true, element: <DashboardHome /> },
+          { path: 'notes', element: <Notes /> },
+          { path: 'courses', element: <Courses /> },
+          { path: 'upload', element: <UploadNote /> },
+          { path: 'classmates', element: <Classmates /> },
+          { path: 'notifications', element: <Notifications /> },
+          { path: 'settings', element: <Settings /> },
+        ],
+      },
     ],
   },
 ])

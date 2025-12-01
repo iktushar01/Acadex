@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import { Card, CardContent } from '@/components/common/Card'
 import { Button } from '@/components/common/Button'
 import { BookOpen, Plus, FileText } from 'lucide-react'
@@ -11,6 +12,7 @@ const API_URL =
   'http://localhost:5000'
 
 export default function Courses() {
+  const { classCode } = useParams()
   const [courses, setCourses] = useState([])
   const [loading, setLoading] = useState(true)
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -18,7 +20,10 @@ export default function Courses() {
   const fetchCourses = async () => {
     try {
       setLoading(true)
-      const response = await axios.get(`${API_URL}/courses`)
+      const url = classCode 
+        ? `${API_URL}/courses?classCode=${classCode}`
+        : `${API_URL}/courses`
+      const response = await axios.get(url)
       setCourses(response.data)
     } catch (error) {
       console.error('Error fetching courses:', error)
@@ -29,7 +34,7 @@ export default function Courses() {
 
   useEffect(() => {
     fetchCourses()
-  }, [])
+  }, [classCode])
 
   const handleAddCourse = () => {
     setIsModalOpen(true)
@@ -94,6 +99,7 @@ export default function Courses() {
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
         onSuccess={handleCourseAdded}
+        classCode={classCode}
       />
     </div>
   )

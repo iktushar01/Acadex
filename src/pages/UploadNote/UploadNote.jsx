@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/common/Card'
 import { Input } from '@/components/common/Input'
@@ -11,6 +12,7 @@ const API_URL =
   'http://localhost:5000'
 
 export default function UploadNote() {
+  const { classCode } = useParams()
   const [formData, setFormData] = useState({
     title: '',
     courseId: '',
@@ -27,7 +29,10 @@ export default function UploadNote() {
     const fetchCourses = async () => {
       try {
         setCoursesLoading(true)
-        const response = await axios.get(`${API_URL}/courses`)
+        const url = classCode 
+          ? `${API_URL}/courses?classCode=${classCode}`
+          : `${API_URL}/courses`
+        const response = await axios.get(url)
         setCourses(response.data || [])
         setCoursesError('')
       } catch (error) {
@@ -39,7 +44,7 @@ export default function UploadNote() {
     }
 
     fetchCourses()
-  }, [])
+  }, [classCode])
 
   const selectedCourse = courses.find((course) => course._id === formData.courseId)
 
@@ -91,6 +96,7 @@ export default function UploadNote() {
         resourceType: primaryAsset?.resourceType,
         format: primaryAsset?.format,
         bytes: primaryAsset?.bytes,
+        classCode: classCode || null,
       })
 
       setMessage({ type: 'success', text: 'Note uploaded successfully.' })
