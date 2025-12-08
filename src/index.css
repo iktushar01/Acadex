@@ -181,4 +181,81 @@
     margin: 0;
     min-height: 100vh;
   }
+  
+  /* Hide Clerk branding - "Secured by Clerk" footer */
+  [data-clerk-element="footer"],
+  [class*="cl-footer"],
+  [class*="clFooter"],
+  [class*="footerText"],
+  div[class*="footer"],
+  div[class*="Footer"],
+  footer[class*="cl-"],
+  .cl-footer,
+  .cl-footerText {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  /* Hide any text containing "Secured by" using attribute selectors */
+  [data-clerk-element="footer"] *,
+  [class*="cl-footer"] * {
+    display: none !important;
+  }
+  
+  /* Hide "Secured by Clerk" text in UserButton modal */
+  [class*="cl-userButtonPopover"] [class*="footer"],
+  [class*="cl-userButtonPopover"] [class*="footerText"],
+  [class*="cl-userButtonPopover"] [class*="cl-footer"],
+  [class*="cl-userButtonPopover"] [class*="cl-footerText"],
+  [class*="cl-modalContent"] [class*="footer"],
+  [class*="cl-modalContent"] [class*="footerText"],
+  [class*="cl-modalContent"] [class*="cl-footer"],
+  [class*="cl-modalContent"] [class*="cl-footerText"],
+  [class*="cl-accountSwitcher"] [class*="footer"],
+  [class*="cl-accountSwitcher"] [class*="footerText"],
+  [class*="cl-accountSwitcher"] [class*="cl-footer"],
+  [class*="cl-accountSwitcher"] [class*="cl-footerText"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+  }
+  
+  /* Hide footer content in UserButton modals */
+  [class*="cl-userButtonPopover"] [class*="footer"] *,
+  [class*="cl-modalContent"] [class*="footer"] *,
+  [class*="cl-accountSwitcher"] [class*="footer"] * {
+    display: none !important;
+  }
+  
+  /* Customize Clerk components to show Acadex branding */
+  [class*="cl-headerTitle"],
+  [class*="cl-headerSubtitle"] {
+    display: none !important;
+  }
+  
+  /* Style social buttons with Acadex branding */
+  [class*="cl-socialButtonsBlockButton"] {
+    border: none !important;
+    background-color: hsl(var(--color-background)) !important;
+    transition: all 0.3s ease !important;
+  }
+  
+  [class*="cl-socialButtonsBlockButton"]:hover {
+    background-color: hsl(var(--color-accent) / 0.15) !important;
+    transform: scale(1.02) !important;
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.2) !important;
+  }
+  
+  [class*="cl-socialButtonsBlockButton"]:active {
+    transform: scale(0.98) !important;
+  }
 }

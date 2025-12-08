@@ -82,8 +82,8 @@ export default function ClerkUsers({ showUi = true }) {
   };
 
   if (!showUi) return null;
-  if (!isLoaded) return <p>Loading Clerk...</p>;
-  if (!isSignedIn) return <p>Please sign in.</p>;
+  if (!isLoaded) return null;
+  if (!isSignedIn) return null;
 
   return (
     <div className="space-y-4 rounded-2xl border border-border bg-card p-6 shadow-sm">
@@ -94,7 +94,7 @@ export default function ClerkUsers({ showUi = true }) {
           className="h-20 w-20 rounded-full object-cover border border-border"
         />
         <div>
-          <p className="text-sm text-muted-foreground">Clerk Profile</p>
+          <p className="text-sm text-muted-foreground">Acadex Profile</p>
           <p className="text-xl font-semibold">{user.fullName || "Unknown"}</p>
           <p className="text-sm text-muted-foreground">
             {user.primaryEmailAddress?.emailAddress || "No email"}
@@ -116,7 +116,7 @@ export default function ClerkUsers({ showUi = true }) {
               onClick={handleUpdate}
               disabled={isUpdating}
             >
-              {isUpdating ? "Updating..." : "Update from Clerk"}
+              {isUpdating ? "Updating..." : "Update Profile"}
             </button>
             <button
               className="rounded-lg border border-destructive px-3 py-2 text-sm text-destructive disabled:opacity-50"

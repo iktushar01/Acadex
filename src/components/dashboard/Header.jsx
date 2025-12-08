@@ -34,6 +34,8 @@ export function Header({ classCode }) {
               appearance={{
                 elements: {
                   avatarBox: 'h-8 w-8',
+                  footer: 'hidden',
+                  footerText: 'hidden',
                 },
               }}
             />

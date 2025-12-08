@@ -1,4 +1,4 @@
-import { BookOpen, Sparkles } from 'lucide-react'
+import logoImage from '@/assets/logo.png'
 
 function Logo({ onClick, className = '' }) {
   const handleClick = () => {
@@ -28,24 +28,18 @@ function Logo({ onClick, className = '' }) {
           {/* Middle Glow Layer */}
           <div className="absolute inset-0 bg-gradient-to-br from-orange-500/40 via-orange-500/20 to-transparent rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse-slow" />
           
-          {/* Icon Background with Modern Gradient */}
-          <div className="relative w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-2xl bg-gradient-to-br from-orange-500 via-orange-500/95 to-amber-500 flex items-center justify-center shadow-2xl group-hover:shadow-[0_0_30px_rgba(249,115,22,0.6)] group-hover:scale-110 transition-all duration-500 overflow-hidden transform group-hover:-translate-y-1">
+          {/* Logo Image with Modern Effects */}
+          <div className="relative w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-2xl overflow-hidden shadow-2xl group-hover:shadow-[0_0_30px_rgba(249,115,22,0.6)] group-hover:scale-110 transition-all duration-500 transform group-hover:-translate-y-1">
+            <img 
+              src={logoImage} 
+              alt="Acadex Logo" 
+              className="w-full h-full object-cover"
+            />
             {/* Animated Gradient Mesh Overlay */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             
             {/* Shimmer Effect */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
-            
-            {/* Radial Gradient Overlay */}
-            <div className="absolute inset-0 bg-radial-gradient from-white/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            
-            {/* Icon with 3D Effect */}
-            <BookOpen className="relative z-10 w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white drop-shadow-lg transform group-hover:rotate-6 transition-transform duration-500" />
-            
-            {/* Multiple Sparkle Effects */}
-            <Sparkles className="absolute -top-1 -right-1 w-3 h-3 text-yellow-300 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse transform group-hover:rotate-12" />
-            <Sparkles className="absolute -bottom-1 -left-1 w-2.5 h-2.5 text-amber-400 opacity-0 group-hover:opacity-70 transition-opacity duration-700 animate-pulse delay-100" style={{ animationDelay: '0.2s' }} />
-            <Sparkles className="absolute top-1/2 -right-2 w-2 h-2 text-orange-300 opacity-0 group-hover:opacity-60 transition-opacity duration-700 animate-pulse delay-200" style={{ animationDelay: '0.4s' }} />
           </div>
         </div>
         

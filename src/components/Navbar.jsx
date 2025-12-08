@@ -168,6 +168,8 @@ function Navbar() {
                       baseTheme: isDark ? dark : light,
                       elements: {
                         avatarBox: 'w-9 h-9 md:w-10 md:h-10',
+                        footer: 'hidden',
+                        footerText: 'hidden',
                       },
                     }}
                   />
@@ -250,6 +252,8 @@ function Navbar() {
                           baseTheme: isDark ? dark : light,
                           elements: {
                             avatarBox: 'w-9 h-9',
+                            footer: 'hidden',
+                            footerText: 'hidden',
                           },
                         }}
                       />

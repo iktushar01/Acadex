@@ -196,7 +196,7 @@ export default function Settings() {
             />
             <div>
               <p className="text-sm uppercase tracking-wide text-primary-foreground/80">
-                Signed in with Clerk
+                Signed in with Acadex
               </p>
               <h1 className="text-3xl font-semibold">{profile.firstName || profile.lastName ? `${profile.firstName} ${profile.lastName}`.trim() : user?.username || 'Student'}</h1>
               <p className="text-primary-foreground/80">
@@ -274,13 +274,13 @@ export default function Settings() {
               </div>
             </div>
             <p className="text-xs text-muted-foreground">
-              Names are synced from your Clerk identity. Use the “Manage profile” button to edit them.
+              Names are synced from your Acadex account. Use the "Manage profile" button to edit them.
             </p>
             <div>
               <label className="text-sm font-medium mb-2 block">Email</label>
               <Input type="email" value={profile.email} readOnly disabled />
               <p className="text-xs text-muted-foreground mt-1">
-                Managed by Clerk. Update from the Clerk profile modal.
+                Managed by Acadex. Update from the profile settings.
               </p>
             </div>
             <div>
@@ -324,7 +324,7 @@ export default function Settings() {
               <p className="mt-1 text-sm text-muted-foreground">
                 {user?.twoFactorEnabled
                   ? 'Your account is protected with an additional verification step.'
-                  : 'Set up 2FA in the Clerk dashboard to add another layer of security.'}
+                  : 'Set up 2FA in your account settings to add another layer of security.'}
               </p>
             </div>
             <div className="rounded-2xl border border-border p-4">
@@ -337,7 +337,7 @@ export default function Settings() {
               </p>
             </div>
             <Button variant="outline" className="w-full" onClick={() => openUserProfile?.({})}>
-              Open Clerk security settings
+              Open security settings
             </Button>
           </CardContent>
         </Card>

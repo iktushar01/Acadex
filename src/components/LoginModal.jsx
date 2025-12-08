@@ -2,19 +2,14 @@ import { useState, useEffect } from 'react'
 import Modal from 'react-modal'
 import { SignIn } from '@clerk/clerk-react'
 import { dark, light } from '@clerk/themes'
-import { X, Moon, Sun } from 'lucide-react'
+import { X } from 'lucide-react'
 import { useTheme } from './theme-provider'
+import logoImage from '@/assets/logo.png'
 
 /**
  * LoginModal Component
  * 
- * Displays Clerk's sign-in UI inside a react-modal.
- * 
- * IMPORTANT: To show Google as the only sign-in option:
- * 1. Go to Clerk Dashboard → User & Authentication → Social connections
- * 2. Add Google connection
- * 3. Disable all other providers (Email, Phone, etc.)
- * 4. Save changes
+ * Displays Acadex sign-in UI inside a react-modal.
  */
 function LoginModal({ isOpen, onClose }) {
   const [isClerkLoaded, setIsClerkLoaded] = useState(false)
@@ -32,16 +27,16 @@ function LoginModal({ isOpen, onClose }) {
   const isDark = currentTheme === 'dark'
 
   useEffect(() => {
-    // Check if Clerk is loaded
-    const checkClerk = () => {
+    // Check if authentication is loaded
+    const checkAuth = () => {
       if (window.Clerk) {
         setIsClerkLoaded(true)
       } else {
         // Retry after a short delay
-        setTimeout(checkClerk, 100)
+        setTimeout(checkAuth, 100)
       }
     }
-    checkClerk()
+    checkAuth()
   }, [isOpen])
 
   // Custom styles for the modal overlay and content (theme-aware)
@@ -87,9 +82,8 @@ function LoginModal({ isOpen, onClose }) {
       preventScroll={true}
     >
       <div className="relative bg-card text-card-foreground rounded-xl shadow-xl border border-border overflow-hidden transition-all duration-300">
-        {/* Theme Toggle & Close Button */}
-        <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
-          <ThemeToggle />
+        {/* Close Button */}
+        <div className="absolute top-4 right-4 z-10">
           <button
             onClick={onClose}
             className="p-2 rounded-lg hover:bg-muted transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
@@ -102,23 +96,33 @@ function LoginModal({ isOpen, onClose }) {
 
         {/* Modal Content */}
         <div className="p-6 sm:p-8">
-          {/* Header */}
+          {/* Header with Acadex Logo */}
           <div className="mb-6 text-center">
+            <div className="flex justify-center mb-4">
+              <div className="relative">
+                <img 
+                  src={logoImage} 
+                  alt="Acadex Logo" 
+                  className="w-16 h-16 rounded-xl shadow-lg"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 via-transparent to-amber-500/20 rounded-xl opacity-0 hover:opacity-100 transition-opacity duration-300" />
+              </div>
+            </div>
             <h2
               id="modal-title"
               className="text-2xl font-bold text-card-foreground mb-2 transition-colors duration-300"
             >
-              Welcome Back
+              Welcome to Acadex
             </h2>
             <p
               id="modal-description"
               className="text-sm text-muted-foreground transition-colors duration-300"
             >
-              Sign in with Google to get started
+              Sign in with Google to continue
             </p>
           </div>
 
-          {/* Clerk Sign-In Component */}
+          {/* Acadex Sign-In Component */}
           <div className="flex justify-center">
             {isClerkLoaded ? (
               <SignIn
@@ -128,6 +132,21 @@ function LoginModal({ isOpen, onClose }) {
                   elements: {
                     rootBox: 'mx-auto',
                     card: 'shadow-none border-none bg-transparent',
+                    footer: 'hidden',
+                    footerText: 'hidden',
+                    headerTitle: 'hidden',
+                    headerSubtitle: 'hidden',
+                    socialButtonsBlockButton: 'bg-background hover:bg-accent border-0 transition-all duration-300 hover:shadow-md hover:scale-[1.02]',
+                    socialButtonsBlockButtonText: 'text-foreground hover:text-foreground',
+                  },
+                  layout: {
+                    socialButtonsPlacement: 'top',
+                    showOptionalFields: false,
+                  },
+                  variables: {
+                    colorPrimary: 'hsl(45, 89%, 51%)',
+                    colorText: isDark ? 'hsl(0, 0%, 96%)' : 'hsl(0, 0%, 10%)',
+                    colorBackground: isDark ? 'hsl(0, 0%, 11%)' : 'hsl(0, 0%, 100%)',
                   },
                 }}
               />
@@ -141,11 +160,11 @@ function LoginModal({ isOpen, onClose }) {
             )}
           </div>
 
-          {/* Fallback message if Clerk fails */}
+          {/* Fallback message if sign-in fails */}
           {!isClerkLoaded && (
             <div className="mt-4 p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg transition-colors duration-300">
               <p className="text-sm text-yellow-800 dark:text-yellow-200">
-                Having trouble loading? Please check your Clerk configuration and ensure
+                Having trouble loading? Please check your configuration and ensure
                 VITE_CLERK_PUBLISHABLE_KEY is set correctly.
               </p>
             </div>
@@ -153,49 +172,6 @@ function LoginModal({ isOpen, onClose }) {
         </div>
       </div>
     </Modal>
-  )
-}
-
-// Theme Toggle Component (simple button)
-function ThemeToggle() {
-  const { theme, setTheme } = useTheme()
-
-  const toggleTheme = () => {
-    // Cycle through: light -> dark -> system -> light
-    if (theme === 'light') {
-      setTheme('dark')
-    } else if (theme === 'dark') {
-      setTheme('system')
-    } else {
-      setTheme('light')
-    }
-  }
-
-  // Determine icon based on current effective theme
-  const getCurrentTheme = () => {
-    if (theme === 'system') {
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-    }
-    return theme
-  }
-
-  const currentTheme = getCurrentTheme()
-  const isDark = currentTheme === 'dark'
-
-  return (
-    <button
-      onClick={toggleTheme}
-      className="p-2 rounded-lg hover:bg-muted transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
-      aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
-      type="button"
-      title={`Current: ${theme === 'system' ? 'System' : theme === 'dark' ? 'Dark' : 'Light'}`}
-    >
-      {isDark ? (
-        <Sun className="w-5 h-5 text-muted-foreground" />
-      ) : (
-        <Moon className="w-5 h-5 text-muted-foreground" />
-      )}
-    </button>
   )
 }
 
