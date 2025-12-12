@@ -80,7 +80,7 @@ function HowItWorks() {
               <span className="text-foreground">Get Started in</span>
               <br />
               <span 
-                className="bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 bg-clip-text text-transparent inline-block relative"
+                className="bg-linear-to-r from-orange-500 via-amber-500 to-yellow-500 bg-clip-text text-transparent inline-block relative"
                 style={{
                   textShadow: '2px 2px 4px rgba(0,0,0,0.1)',
                   transform: 'rotate(-0.5deg)',
@@ -90,7 +90,7 @@ function HowItWorks() {
                 Three Simple Steps
               </span>
               {/* Decorative underline */}
-              <span className="block mt-3 w-40 h-1 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full mx-auto" />
+              <span className="block mt-3 w-40 h-1 bg-linear-to-r from-orange-500 to-yellow-500 rounded-full mx-auto" />
             </h2>
             
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto border-l-0 sm:border-l-4 pl-0 sm:pl-4 border-primary/30">
@@ -101,7 +101,7 @@ function HowItWorks() {
           {/* Steps - Notebook Style */}
           <div className="relative">
             {/* Connection line for desktop - Subtle */}
-            <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary/10 to-transparent -translate-y-1/2" />
+            <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-primary/10 to-transparent -translate-y-1/2" />
             
             <div className="grid gap-8 md:grid-cols-3 relative pl-0 sm:pl-4 lg:pl-0">
               {steps.map((step, index) => {
@@ -155,7 +155,7 @@ function HowItWorks() {
                         
                         {/* Icon - Sticky Note Style */}
                         <div 
-                          className={`mb-6 w-16 h-16 rounded-lg bg-gradient-to-br ${step.gradient} flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 relative`}
+                          className={`mb-6 w-16 h-16 rounded-lg bg-linear-to-br ${step.gradient} flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 relative`}
                           style={{
                             boxShadow: '0 4px 8px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.2)'
                           }}
@@ -174,7 +174,7 @@ function HowItWorks() {
                         >
                           {step.title}
                           {/* Underline decoration */}
-                          <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r ${step.gradient} opacity-30 group-hover:opacity-60 transition-opacity`} />
+                          <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-linear-to-r ${step.gradient} opacity-30 group-hover:opacity-60 transition-opacity`} />
                         </h3>
                         
                         {/* Description */}
@@ -187,7 +187,7 @@ function HowItWorks() {
                           {[...Array(3)].map((_, i) => (
                             <div 
                               key={i}
-                              className={`w-1.5 h-1.5 rounded-full bg-gradient-to-br ${step.gradient}`}
+                              className={`w-1.5 h-1.5 rounded-full bg-linear-to-br ${step.gradient}`}
                             />
                           ))}
                         </div>

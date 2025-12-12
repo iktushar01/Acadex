@@ -88,7 +88,7 @@ function FeedBack() {
               <span className="text-foreground">Help Us</span>
               <br />
               <span 
-                className="bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 bg-clip-text text-transparent inline-block relative"
+                className="bg-linear-to-r from-orange-500 via-amber-500 to-yellow-500 bg-clip-text text-transparent inline-block relative"
                 style={{
                   textShadow: '2px 2px 4px rgba(0,0,0,0.1)',
                   transform: 'rotate(-0.5deg)',
@@ -98,7 +98,7 @@ function FeedBack() {
                 Improve Acadex
               </span>
               {/* Decorative underline */}
-              <span className="block mt-3 w-40 h-1 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full mx-auto" />
+              <span className="block mt-3 w-40 h-1 bg-linear-to-r from-orange-500 to-yellow-500 rounded-full mx-auto" />
             </h2>
             
             <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto border-l-0 sm:border-l-4 pl-0 sm:pl-4 border-primary/30 leading-relaxed">
@@ -126,7 +126,7 @@ function FeedBack() {
                   style={{ transform: 'rotate(-0.3deg)' }}
                 >
                   What would you like to share?
-                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 opacity-30" />
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-linear-to-r from-blue-500 to-cyan-500 opacity-30" />
                 </h3>
                 
                 <div className="space-y-4">
@@ -163,7 +163,7 @@ function FeedBack() {
                       >
                         <div className="flex items-start gap-4">
                           <div 
-                            className={`w-12 h-12 rounded-lg bg-gradient-to-br ${type.gradient} flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                            className={`w-12 h-12 rounded-lg bg-linear-to-br ${type.gradient} flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300`}
                             style={{
                               boxShadow: '0 4px 8px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.2)'
                             }}
@@ -207,7 +207,7 @@ function FeedBack() {
               {isSubmitted ? (
                 <div className="flex flex-col items-center justify-center py-16 space-y-4 text-center">
                   <div 
-                    className="w-20 h-20 rounded-lg bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center shadow-lg"
+                    className="w-20 h-20 rounded-lg bg-linear-to-br from-green-500 to-emerald-500 flex items-center justify-center shadow-lg"
                     style={{
                       boxShadow: '0 4px 8px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.2)',
                       transform: 'rotate(6deg)'

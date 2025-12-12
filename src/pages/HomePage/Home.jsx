@@ -5,10 +5,10 @@ import { ArrowRight, Sparkles, FileText, Users, TrendingUp, PenTool, BookOpen, S
 import Lottie from 'lottie-react'
 import axios from 'axios'
 import Swal from 'sweetalert2'
-import { useTheme } from '@/components/theme-provider'
+import { useTheme } from '@/context/use-theme'
 import { Button } from '@/components/common/Button'
-import LoginModal from '@/components/LoginModal'
-import DashboardAccessModal from '@/components/AccessDashboardModal/DashboardAccessModal'
+import LoginModal from '@/components/auth/LoginModal'
+import DashboardAccessModal from '@/components/features/AccessDashboardModal/DashboardAccessModal'
 import Features from './Features'
 import HowItWorks from './HowItWorks'
 import About from './About'
@@ -167,7 +167,7 @@ function Home() {
               >
                 {/* Badge - Sticky Note Style */}
                 <div 
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-yellow-300 dark:bg-yellow-900/40 border-2 border-yellow-400 dark:border-yellow-700 shadow-lg rotate-[-2deg] hover:rotate-0 transition-transform duration-300"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-yellow-300 dark:bg-yellow-900/40 border-2 border-yellow-400 dark:border-yellow-700 shadow-lg -rotate-2 hover:rotate-0 transition-transform duration-300"
                   style={{
                     boxShadow: '0 4px 6px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.05)'
                   }}
@@ -182,7 +182,7 @@ function Home() {
                     <span className="text-foreground inline-block">Study Smarter,</span>
                     <br />
                     <span 
-                      className="bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 bg-clip-text text-transparent inline-block relative"
+                      className="bg-linear-to-r from-orange-500 via-amber-500 to-yellow-500 bg-clip-text text-transparent inline-block relative"
                       style={{
                         textShadow: '2px 2px 4px rgba(0,0,0,0.1)',
                         transform: 'rotate(-1deg)',
@@ -192,7 +192,7 @@ function Home() {
                       Together
                     </span>
                     {/* Decorative underline */}
-                    <span className="block mt-2 w-32 h-1 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full" />
+                    <span className="block mt-2 w-32 h-1 bg-linear-to-r from-orange-500 to-yellow-500 rounded-full" />
                   </h1>
                   <p className="text-base sm:text-lg md:text-2xl text-muted-foreground leading-relaxed max-w-xl border-l-0 sm:border-l-4 pl-0 sm:pl-4 border-primary/30">
                     The modern platform for sharing notes, organizing courses, and collaborating with classmates.
@@ -211,7 +211,7 @@ function Home() {
                         Open Dashboard
                         <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                       </span>
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                      <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                     </Button>
                   ) : (
                     <Button
@@ -223,7 +223,7 @@ function Home() {
                         Get Started Free
                         <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                       </span>
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                      <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                     </Button>
                   )}
                 </div>
@@ -239,7 +239,7 @@ function Home() {
                   {/* Notebook Container */}
                   <div className="relative">
                     {/* Spiral Binding Effect */}
-                    <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-gray-300 to-gray-400 dark:from-gray-700 dark:to-gray-600 rounded-l-2xl shadow-inner z-20">
+                    <div className="absolute left-0 top-0 bottom-0 w-8 bg-linear-to-r from-gray-300 to-gray-400 dark:from-gray-700 dark:to-gray-600 rounded-l-2xl shadow-inner z-20">
                       {/* Spiral Holes */}
                       {[...Array(12)].map((_, i) => (
                         <div
@@ -282,7 +282,7 @@ function Home() {
 
                         {/* Lottie Animation */}
                         <div className="relative w-full h-full">
-                          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 rounded-lg" />
+                          <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-primary/10 rounded-lg" />
                           <Lottie
                             animationData={writingAnimation}
                             loop={true}

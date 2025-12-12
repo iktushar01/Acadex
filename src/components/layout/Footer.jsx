@@ -75,7 +75,7 @@ function Footer() {
             {/* Product Links */}
             <div>
               <h4 className="text-sm font-semibold text-foreground mb-4 flex items-center gap-2">
-                <span className="w-1 h-4 bg-gradient-to-b from-primary to-primary/60 rounded-full" />
+                <span className="w-1 h-4 bg-linear-to-b from-primary to-primary/60 rounded-full" />
                 Product
               </h4>
               <ul className="space-y-3">
@@ -96,7 +96,7 @@ function Footer() {
             {/* Support Links */}
             <div>
               <h4 className="text-sm font-semibold text-foreground mb-4 flex items-center gap-2">
-                <span className="w-1 h-4 bg-gradient-to-b from-primary to-primary/60 rounded-full" />
+                <span className="w-1 h-4 bg-linear-to-b from-primary to-primary/60 rounded-full" />
                 Support
               </h4>
               <ul className="space-y-3">
@@ -117,7 +117,7 @@ function Footer() {
             {/* Legal Links */}
             <div>
               <h4 className="text-sm font-semibold text-foreground mb-4 flex items-center gap-2">
-                <span className="w-1 h-4 bg-gradient-to-b from-primary to-primary/60 rounded-full" />
+                <span className="w-1 h-4 bg-linear-to-b from-primary to-primary/60 rounded-full" />
                 Legal
               </h4>
               <ul className="space-y-3">

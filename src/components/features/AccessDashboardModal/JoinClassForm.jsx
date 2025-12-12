@@ -2,8 +2,8 @@ import { useForm } from 'react-hook-form'
 import { useEffect, useState } from 'react'
 import { useUser } from '@clerk/clerk-react'
 import axios from 'axios'
-import { Button } from '../common/Button'
-import { FormInput } from '../common/FormInput'
+import { Button } from '../../common/Button'
+import { FormInput } from '../../common/FormInput'
 
 const API_URL =
   import.meta.env.VITE_API_URL ||

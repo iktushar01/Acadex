@@ -3,7 +3,7 @@ import Modal from 'react-modal'
 import { SignIn } from '@clerk/clerk-react'
 import { dark, light } from '@clerk/themes'
 import { X } from 'lucide-react'
-import { useTheme } from './theme-provider'
+import { useTheme } from '@/context/use-theme'
 import logoImage from '@/assets/logo.png'
 
 /**
@@ -105,7 +105,7 @@ function LoginModal({ isOpen, onClose }) {
                   alt="Acadex Logo" 
                   className="w-16 h-16 rounded-xl shadow-lg"
                 />
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 via-transparent to-amber-500/20 rounded-xl opacity-0 hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-linear-to-br from-orange-500/20 via-transparent to-amber-500/20 rounded-xl opacity-0 hover:opacity-100 transition-opacity duration-300" />
               </div>
             </div>
             <h2

@@ -2,7 +2,8 @@ import { RouterProvider } from 'react-router-dom'
 import { ClerkProvider } from '@clerk/clerk-react'
 import { dark, light } from '@clerk/themes'
 import router from './router/routes'
-import { ThemeProvider, useTheme } from './components/theme-provider'
+import { ThemeProvider } from './context/theme-provider'
+import { useTheme } from './context/use-theme'
 import './index.css'
 
 // Get Clerk publishable key from environment variables

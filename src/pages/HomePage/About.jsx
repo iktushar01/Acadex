@@ -85,7 +85,7 @@ function About() {
               <span className="text-foreground">Built for</span>
               <br />
               <span 
-                className="bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 bg-clip-text text-transparent inline-block relative"
+                className="bg-linear-to-r from-orange-500 via-amber-500 to-yellow-500 bg-clip-text text-transparent inline-block relative"
                 style={{
                   textShadow: '2px 2px 4px rgba(0,0,0,0.1)',
                   transform: 'rotate(-0.5deg)',
@@ -95,7 +95,7 @@ function About() {
                 Students, by Students
               </span>
               {/* Decorative underline */}
-              <span className="block mt-3 w-40 h-1 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full mx-auto" />
+              <span className="block mt-3 w-40 h-1 bg-linear-to-r from-orange-500 to-yellow-500 rounded-full mx-auto" />
             </h2>
             
             <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto border-l-0 sm:border-l-4 pl-0 sm:pl-4 border-primary/30 leading-relaxed">
@@ -145,7 +145,7 @@ function About() {
                     <div className="relative p-6 z-10 text-center">
                       {/* Icon - Sticky Note Style */}
                       <div 
-                        className={`mb-4 w-16 h-16 rounded-lg bg-gradient-to-br ${value.gradient} flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 relative mx-auto`}
+                        className={`mb-4 w-16 h-16 rounded-lg bg-linear-to-br ${value.gradient} flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 relative mx-auto`}
                         style={{
                           boxShadow: '0 4px 8px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.2)'
                         }}
@@ -164,7 +164,7 @@ function About() {
                       >
                         {value.title}
                         {/* Underline decoration */}
-                        <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r ${value.gradient} opacity-30 group-hover:opacity-60 transition-opacity`} />
+                        <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-linear-to-r ${value.gradient} opacity-30 group-hover:opacity-60 transition-opacity`} />
                       </h3>
                       
                       {/* Description */}
@@ -177,7 +177,7 @@ function About() {
                         {[...Array(3)].map((_, i) => (
                           <div 
                             key={i}
-                            className={`w-1.5 h-1.5 rounded-full bg-gradient-to-br ${value.gradient}`}
+                            className={`w-1.5 h-1.5 rounded-full bg-linear-to-br ${value.gradient}`}
                           />
                         ))}
                       </div>

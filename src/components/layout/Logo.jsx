@@ -23,10 +23,10 @@ function Logo({ onClick, className = '' }) {
         {/* Logo Icon Container with 3D Effect */}
         <div className="relative transform group-hover:rotate-3 transition-transform duration-500">
           {/* Outer Glow Ring - Enhanced */}
-          <div className="absolute inset-0 bg-gradient-to-br from-orange-500/60 via-orange-500/30 to-amber-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse-slow scale-125" />
+          <div className="absolute inset-0 bg-linear-to-br from-orange-500/60 via-orange-500/30 to-amber-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse-slow scale-125" />
           
           {/* Middle Glow Layer */}
-          <div className="absolute inset-0 bg-gradient-to-br from-orange-500/40 via-orange-500/20 to-transparent rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse-slow" />
+          <div className="absolute inset-0 bg-linear-to-br from-orange-500/40 via-orange-500/20 to-transparent rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse-slow" />
           
           {/* Logo Image with Modern Effects */}
           <div className="relative w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-2xl overflow-hidden shadow-2xl group-hover:shadow-[0_0_30px_rgba(249,115,22,0.6)] group-hover:scale-110 transition-all duration-500 transform group-hover:-translate-y-1">
@@ -36,30 +36,30 @@ function Logo({ onClick, className = '' }) {
               className="w-full h-full object-cover"
             />
             {/* Animated Gradient Mesh Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-linear-to-br from-white/30 via-transparent to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             
             {/* Shimmer Effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
+            <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
           </div>
         </div>
         
         {/* Modern Logo Text with Advanced Effects */}
         <div className="relative">
           {/* Text Glow Effect */}
-          <span className="absolute inset-0 text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-400 bg-clip-text text-transparent opacity-0 group-hover:opacity-20 blur-sm transition-opacity duration-500">
+          <span className="absolute inset-0 text-lg sm:text-xl md:text-2xl font-bold bg-linear-to-r from-orange-500 via-amber-500 to-yellow-400 bg-clip-text text-transparent opacity-0 group-hover:opacity-20 blur-sm transition-opacity duration-500">
             Acadex
           </span>
           
           {/* Main Text - Visible by default */}
-          <span className="relative z-10 text-lg sm:text-xl md:text-2xl font-bold text-orange-500 dark:text-orange-400 group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:via-amber-500 group-hover:to-yellow-400 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-500 drop-shadow-sm transform group-hover:scale-105 inline-block">
+          <span className="relative z-10 text-lg sm:text-xl md:text-2xl font-bold text-orange-500 dark:text-orange-400 group-hover:bg-linear-to-r group-hover:from-orange-500 group-hover:via-amber-500 group-hover:to-yellow-400 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-500 drop-shadow-sm transform group-hover:scale-105 inline-block">
             Acadex
           </span>
           
           {/* Animated Underline with Gradient */}
-          <span className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-400 rounded-full group-hover:w-full transition-all duration-700 ease-out shadow-lg shadow-orange-500/50" />
+          <span className="absolute bottom-0 left-0 w-0 h-1 bg-linear-to-r from-orange-500 via-amber-500 to-yellow-400 rounded-full group-hover:w-full transition-all duration-700 ease-out shadow-lg shadow-orange-500/50" />
           
           {/* Secondary Underline Glow */}
-          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-400 to-amber-400 rounded-full group-hover:w-full transition-all duration-1000 ease-out opacity-60 blur-sm" />
+          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-orange-400 to-amber-400 rounded-full group-hover:w-full transition-all duration-1000 ease-out opacity-60 blur-sm" />
         </div>
         
         {/* Floating Particles Effect */}

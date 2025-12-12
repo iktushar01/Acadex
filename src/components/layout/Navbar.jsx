@@ -4,9 +4,9 @@ import { UserButton } from '@clerk/clerk-react'
 import { dark, light } from '@clerk/themes'
 import { Sun, Moon, Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { useTheme } from './theme-provider'
-import LoginModal from './LoginModal'
-import ClerkUsers from './ClerkUsers'
+import { useTheme } from '@/context/use-theme'
+import LoginModal from '@/components/auth/LoginModal'
+import ClerkUsers from '@/components/auth/ClerkUsers'
 import Logo from './Logo'
 
 const navLinks = [
@@ -129,11 +129,11 @@ function Navbar() {
                     {link.label}
                     {/* Active Indicator */}
                     {isActive && (
-                      <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-3/4 h-0.5 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full" />
+                      <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-3/4 h-0.5 bg-linear-to-r from-orange-500 to-amber-500 rounded-full" />
                     )}
                     {/* Hover Indicator */}
                     {!isActive && (
-                      <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full group-hover:w-3/4 transition-all duration-300" />
+                      <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-linear-to-r from-orange-500 to-amber-500 rounded-full group-hover:w-3/4 transition-all duration-300" />
                     )}
                   </button>
                 )

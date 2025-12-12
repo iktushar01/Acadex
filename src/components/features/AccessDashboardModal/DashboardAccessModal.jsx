@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import Modal from '@/ReuseableComponent/Modal'
-import { Button } from '../common/Button'
+import Modal from '@/components/common/Modal'
+import { Button } from '../../common/Button'
 import CreateClassForm from './CreateClassForm'
 import JoinClassForm from './JoinClassForm'
 import { cn } from '@/lib/utils'
